@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boutique de Perfumes | Catálogo Exclusivo</title>
+  <title>Perfumes Fco | Catálogo Exclusivo</title>
   <style>
     :root {
       --bg-color: #0f1115;
@@ -12,6 +12,8 @@
       --text: #f0f2f5;
       --text-muted: #9aa0a6;
       --btn-hover: #b8952b;
+      --stock-in: #22c55e;   /* Verde disponible */
+      --stock-out: #ef4444;  /* Rojo/Gris agotado */
     }
 
     * {
@@ -25,7 +27,7 @@
       background-color: var(--bg-color);
       color: var(--text);
       line-height: 1.6;
-      padding-bottom: 50px;
+      padding-bottom: 60px;
     }
 
     header {
@@ -68,12 +70,39 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
+      position: relative;
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
       border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    /* Etiqueta de Stock */
+    .badge-stock {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+
+    .badge-stock.disponible {
+      background-color: rgba(34, 197, 94, 0.15);
+      color: var(--stock-in);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .badge-stock.agotado {
+      background-color: rgba(239, 68, 68, 0.15);
+      color: var(--stock-out);
+      border: 1px solid rgba(239, 68, 68, 0.4);
     }
 
     .card-img-container {
@@ -90,6 +119,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .card.is-out .card-img-container img {
+      filter: grayscale(80%) opacity(0.6);
     }
 
     .card-body {
@@ -121,7 +154,7 @@
     }
 
     .card-price {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 15px;
@@ -148,6 +181,13 @@
       background: var(--btn-hover);
     }
 
+    .btn-order:disabled,
+    .btn-order.disabled {
+      background: #333945;
+      color: #777d88;
+      cursor: not-allowed;
+    }
+
     footer {
       text-align: center;
       margin-top: 40px;
@@ -159,52 +199,72 @@
 <body>
 
   <header>
-    <h1>Mi Perfumería</h1>
+    <h1>Perfumes Fco</h1>
     <p>Fragancias exclusivas y contratipos de alta duración. Selecciona tu perfume favorito para coordinar la compra por Instagram.</p>
   </header>
 
   <main class="container">
     <div class="catalog-grid">
 
-      <!-- PRODUCTO 1 -->
-      <article class="card">
-        <div class="card-img-container">
-          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80" alt="Perfume Cítrico">
-        </div>
-        <div class="card-body">
-          <span class="card-brand">Amaderado / Cítrico</span>
-          <h2 class="card-title">Sauvage EDP</h2>
-          <p class="card-desc">Notas de bergamota de Calabria, pimienta de Sichuan y ambroxan. Fresco y potente.</p>
-          <div class="card-price">$25.000 CLP</div>
-          <button class="btn-order" onclick="pedirPorInstagram('Sauvage EDP')">Pedir por Instagram</button>
-        </div>
-      </article>
+      <!-- PRODUCTO 1 (Disponible) -->
+<article class="card">
+  <!-- Aquí colocas "+10 disponibles" -->
+  <span class="badge-stock disponible">+10 disponibles</span>
+  
+  <div class="card-img-container">
+    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80" alt="Sauvage EDP">
+  </div>
+  <div class="card-body">
+    <span class="card-brand">Amaderado / Cítrico</span>
+    <h2 class="card-title">Sauvage EDP</h2>
+    <p class="card-desc">Notas de bergamota de Calabria, pimienta de Sichuan y ambroxan.</p>
+    <div class="card-price">$ 45.000 ARS</div>
+    <button class="btn-order" onclick="pedirPorInstagram('Sauvage EDP')">Pedir por Instagram</button>
+  </div>
+</article>
 
-      <!-- PRODUCTO 2 -->
-      <article class="card">
-        <div class="card-img-container">
-          <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80" alt="Perfume Dulce">
-        </div>
-        <div class="card-body">
-          <span class="card-brand">Oriental / Vainilla</span>
-          <h2 class="card-title">Tobacco Vanille</h2>
-          <p class="card-desc">Especias orientales, hoja de tabaco, flor de tabaco, vainilla y cacao.</p>
-          <div class="card-price">$28.000 CLP</div>
-          <button class="btn-order" onclick="pedirPorInstagram('Tobacco Vanille')">Pedir por Instagram</button>
-        </div>
-      </article>
+      <!-- PRODUCTO 2 (Disponible) -->
+<article class="card">
+  <span class="badge-stock disponible">Últimas 3 unidades</span>
+  <div class="card-img-container">
+    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80" alt="Tobacco Vanille">
+  </div>
+  <div class="card-body">
+    <span class="card-brand">Oriental / Especiado</span>
+    <h2 class="card-title">Tobacco Vanille</h2>
+    <p class="card-desc">Especias orientales, hoja de tabaco, flor de tabaco y vainilla.</p>
+    <div class="card-price">$ 52.000 ARS</div>
+    <button class="btn-order" onclick="pedirPorInstagram('Tobacco Vanille')">Pedir por Instagram</button>
+  </div>
+</article>
 
-      <!-- PRODUCTO 3 -->
+      <!-- PRODUCTO 3 (Agotado - Ejemplo) -->
+<article class="card is-out">
+  <span class="badge-stock agotado">Sin Stock</span>
+  <div class="card-img-container">
+    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&q=80" alt="Baccarat Rouge 540">
+  </div>
+  <div class="card-body">
+    <span class="card-brand">Floral / Ambarino</span>
+    <h2 class="card-title">Baccarat Rouge 540</h2>
+    <p class="card-desc">Notas de jazmín grandiflorum, azafrán y almendra amarga.</p>
+    <div class="card-price">$ 58.000 ARS</div>
+    <button class="btn-order disabled" disabled>Sin Stock</button>
+  </div>
+</article>
+
+      <!-- PRODUCTO 4 (Disponible - Ejemplo de 4to producto) -->
       <article class="card">
+        <span class="badge-stock disponible">En Stock</span>
         <div class="card-img-container">
-          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&q=80" alt="Perfume Floral">
+          <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=500&q=80" alt="Invictus">
         </div>
         <div class="card-body">
-          <span class="card-brand">Floral / Fresco</span>
-          <h2 class="card-title">Baccarat Rouge 540</h2>
-          <p class="card-desc">Notas de jazmín grandiflorum, azafrán, almendra amarga y cedro.</p>
-          <div class="card-price">$30.000 CLP</div>
-          <button class="btn-order" onclick="pedirPorInstagram('Baccarat Rouge 540')">Pedir por Instagram</button>
+          <span class="card-brand">Acuático / Amaderado</span>
+          <h2 class="card-title">Invictus Legend</h2>
+          <p class="card-desc">Notas marinas, sal de pomelo, laurel fresco, ámbar rojo y madera de gaiac.</p>
+          <div class="card-price">$ 42.000 ARS</div>
+          <button class="btn-order" onclick="pedirPorInstagram('Invictus Legend')">Pedir por Instagram</button>
         </div>
       </article>
 
@@ -212,16 +272,13 @@
   </main>
 
   <footer>
-    <p>© 2026 Mi Perfumería — Envíos a todo el país.</p>
+    <p>© 2026 Perfumes Fco — Envíos a toda Argentina.</p>
   </footer>
 
   <script>
-    // Configura tu usuario de Instagram aquí (sin el @)
     const INSTAGRAM_USER = "francoz_00";
 
     function pedirPorInstagram(nombrePerfume) {
-      // Instagram no permite pre-rellenar el texto por enlace directo como WhatsApp,
-      // pero abre directo el perfil o la bandeja de mensajes.
       const url = `https://www.instagram.com/francoz_00/`;
       window.open(url, '_blank');
     }
