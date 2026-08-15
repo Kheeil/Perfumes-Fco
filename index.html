@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfumes Fco | Catálogo Exclusivo</title>
+  <title>Perfumes Fco | Catálogo Oficial</title>
   <style>
     :root {
-      --bg-color: #0f1115;
-      --card-bg: #181b22;
-      --accent: #d4af37; /* Dorado elegante */
+      --bg-color: #0d0f12;
+      --card-bg: #161920;
+      --accent: #d4af37; /* Dorado */
       --text: #f0f2f5;
       --text-muted: #9aa0a6;
-      --btn-hover: #b8952b;
-      --stock-in: #22c55e;   /* Verde disponible */
-      --stock-out: #ef4444;  /* Rojo/Gris agotado */
+      --stock-green: #22c55e;
+      --border-color: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -26,89 +25,97 @@
     body {
       background-color: var(--bg-color);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
       padding-bottom: 60px;
     }
 
     header {
       text-align: center;
-      padding: 50px 20px 30px;
-      background: linear-gradient(180deg, rgba(212,175,55,0.08) 0%, rgba(15,17,21,0) 100%);
+      padding: 40px 20px 25px;
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(13, 15, 18, 0) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Espacio para el Logo */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .brand-logo {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
     }
 
     header h1 {
-      font-size: 2.4rem;
-      letter-spacing: 2px;
+      font-size: 2.2rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 8px;
     }
 
     header p {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 0.95rem;
       max-width: 600px;
       margin: 0 auto;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
 
     .catalog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 22px;
     }
 
     .card {
       background-color: var(--card-bg);
       border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
       position: relative;
+      overflow: hidden;
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(212, 175, 55, 0.3);
+      transform: translateY(-3px);
+      border-color: rgba(212, 175, 55, 0.4);
     }
 
-    /* Etiqueta de Stock */
     .badge-stock {
       position: absolute;
       top: 12px;
       right: 12px;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 9px;
       border-radius: 20px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      z-index: 2;
-    }
-
-    .badge-stock.disponible {
       background-color: rgba(34, 197, 94, 0.15);
-      color: var(--stock-in);
+      color: var(--stock-green);
       border: 1px solid rgba(34, 197, 94, 0.4);
-    }
-
-    .badge-stock.agotado {
-      background-color: rgba(239, 68, 68, 0.15);
-      color: var(--stock-out);
-      border: 1px solid rgba(239, 68, 68, 0.4);
+      z-index: 2;
     }
 
     .card-img-container {
       width: 100%;
-      height: 240px;
-      background-color: #232731;
+      height: 200px;
+      background-color: #1e222b;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -121,71 +128,71 @@
       object-fit: cover;
     }
 
-    .card.is-out .card-img-container img {
-      filter: grayscale(80%) opacity(0.6);
-    }
-
     .card-body {
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
-    .card-brand {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
     .card-title {
       font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .card-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      flex-grow: 1;
-    }
-
-    .card-price {
-      font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      min-height: 2.4em;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Tabla de precios dentro de la tarjeta */
+    .price-list {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      font-size: 0.88rem;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .price-label {
+      color: var(--text-muted);
+    }
+
+    .price-val {
+      font-weight: 700;
+      color: var(--accent);
     }
 
     .btn-order {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       background: var(--accent);
       color: #000;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 10px 14px;
-      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px;
+      border-radius: 6px;
       cursor: pointer;
       border: none;
-      transition: background 0.2s;
       width: 100%;
+      text-align: center;
+      transition: opacity 0.2s;
+      margin-top: auto;
     }
 
     .btn-order:hover {
-      background: var(--btn-hover);
-    }
-
-    .btn-order:disabled,
-    .btn-order.disabled {
-      background: #333945;
-      color: #777d88;
-      cursor: not-allowed;
+      opacity: 0.9;
     }
 
     footer {
@@ -199,72 +206,167 @@
 <body>
 
   <header>
-    <h1>Perfumes Fco</h1>
-    <p>Fragancias exclusivas y contratipos de alta duración. Selecciona tu perfume favorito para coordinar la compra por Instagram.</p>
+    <div class="brand-header">
+      <!-- REEMPLAZA EL LINK DE ABAJO POR EL LOGO DE TU EMPRENDIMIENTO -->
+      <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=120&q=80" alt="Logo Perfumes Fco" class="brand-logo">
+      <h1>Perfumes Fco</h1>
+    </div>
+    <p>Fragancias árabes y de diseñador. Selecciona tu perfume favorito y contáctanos por Instagram para concretar tu pedido.</p>
   </header>
 
   <main class="container">
     <div class="catalog-grid">
 
-      <!-- PRODUCTO 1 (Disponible) -->
-<article class="card">
-  <!-- Aquí colocas "+10 disponibles" -->
-  <span class="badge-stock disponible">+10 disponibles</span>
-  
-  <div class="card-img-container">
-    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80" alt="Sauvage EDP">
-  </div>
-  <div class="card-body">
-    <span class="card-brand">Amaderado / Cítrico</span>
-    <h2 class="card-title">Sauvage EDP</h2>
-    <p class="card-desc">Notas de bergamota de Calabria, pimienta de Sichuan y ambroxan.</p>
-    <div class="card-price">$ 45.000 ARS</div>
-    <button class="btn-order" onclick="pedirPorInstagram('Sauvage EDP')">Pedir por Instagram</button>
-  </div>
-</article>
-
-      <!-- PRODUCTO 2 (Disponible) -->
-<article class="card">
-  <span class="badge-stock disponible">Últimas 3 unidades</span>
-  <div class="card-img-container">
-    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80" alt="Tobacco Vanille">
-  </div>
-  <div class="card-body">
-    <span class="card-brand">Oriental / Especiado</span>
-    <h2 class="card-title">Tobacco Vanille</h2>
-    <p class="card-desc">Especias orientales, hoja de tabaco, flor de tabaco y vainilla.</p>
-    <div class="card-price">$ 52.000 ARS</div>
-    <button class="btn-order" onclick="pedirPorInstagram('Tobacco Vanille')">Pedir por Instagram</button>
-  </div>
-</article>
-
-      <!-- PRODUCTO 3 (Agotado - Ejemplo) -->
-<article class="card is-out">
-  <span class="badge-stock agotado">Sin Stock</span>
-  <div class="card-img-container">
-    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&q=80" alt="Baccarat Rouge 540">
-  </div>
-  <div class="card-body">
-    <span class="card-brand">Floral / Ambarino</span>
-    <h2 class="card-title">Baccarat Rouge 540</h2>
-    <p class="card-desc">Notas de jazmín grandiflorum, azafrán y almendra amarga.</p>
-    <div class="card-price">$ 58.000 ARS</div>
-    <button class="btn-order disabled" disabled>Sin Stock</button>
-  </div>
-</article>
-
-      <!-- PRODUCTO 4 (Disponible - Ejemplo de 4to producto) -->
+      <!-- 1. Afnan 9pm -->
       <article class="card">
-        <span class="badge-stock disponible">En Stock</span>
+        <span class="badge-stock">+10 disponibles</span>
         <div class="card-img-container">
-          <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=500&q=80" alt="Invictus">
+          <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&q=80" alt="Afnan 9pm">
         </div>
         <div class="card-body">
-          <span class="card-brand">Acuático / Amaderado</span>
-          <h2 class="card-title">Invictus Legend</h2>
-          <p class="card-desc">Notas marinas, sal de pomelo, laurel fresco, ámbar rojo y madera de gaiac.</p>
-          <div class="card-price">$ 42.000 ARS</div>
-          <button class="btn-order" onclick="pedirPorInstagram('Invictus Legend')">Pedir por Instagram</button>
+          <h2 class="card-title">Afnan 9pm</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 83.800</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 9.800</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 16.100</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Afnan 9pm')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 2. Afnan Turathi Blue -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80" alt="Afnan Turathi Blue">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Afnan Turathi Blue</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 98.400</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 10.900</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 17.900</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Afnan Turathi Blue')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 3. Al haramian Amber oud Gold -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&q=80" alt="Al Haramain Amber Oud Gold">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Al Haramain Amber Oud Gold</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 134.700</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 12.300</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 20.300</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Al Haramain Amber Oud Gold')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 4. Armaf Club de nuit Urban Elixir -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80" alt="Armaf Club de nuit Urban Elixir">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Armaf Club de Nuit Urban Elixir</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 98.400</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 9.800</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 16.100</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Armaf Club de Nuit Urban Elixir')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 5. French avenue Liquid brun Limited Edition -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=500&q=80" alt="French Avenue Liquid Brun">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">French Avenue Liquid Brun (Ltd)</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 154.100</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 13.400</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 21.400</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('French Avenue Liquid Brun Limited Edition')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 6. Lattafa Eclaire -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1583445013765-46c20c4a6772?w=500&q=80" alt="Lattafa Eclaire">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Lattafa Eclaire</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 81.400</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 11.000</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 17.300</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Lattafa Eclaire')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 7. Lattafa Yara (CANDY) -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=500&q=80" alt="Lattafa Yara Candy">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Lattafa Yara (CANDY)</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 71.700</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 8.100</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 12.600</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Lattafa Yara Candy')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 8. Lattafa Yara (ROSA) -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&q=80" alt="Lattafa Yara Rosa">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Lattafa Yara (ROSA)</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 74.100</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 8.100</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 12.600</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Lattafa Yara Rosa')">Pedir por Instagram</button>
+        </div>
+      </article>
+
+      <!-- 9. Rasasi Hawas Diva -->
+      <article class="card">
+        <span class="badge-stock">+10 disponibles</span>
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?w=500&q=80" alt="Rasasi Hawas Diva">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Rasasi Hawas Diva</h2>
+          <div class="price-list">
+            <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 129.900</span></div>
+            <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 13.300</span></div>
+            <div class="price-row"><span class="price-label">Decant 10 ml:</span><span class="price-val">$ 23.600</span></div>
+          </div>
+          <button class="btn-order" onclick="pedirPorInstagram('Rasasi Hawas Diva')">Pedir por Instagram</button>
         </div>
       </article>
 
@@ -272,7 +374,7 @@
   </main>
 
   <footer>
-    <p>© 2026 Perfumes Fco — Envíos a toda Argentina.</p>
+    <p>© 2026 Perfumes Fco — Precios en ARS. Envíos a todo el país.</p>
   </footer>
 
   <script>
