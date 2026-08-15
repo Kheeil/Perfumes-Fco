@@ -77,7 +77,7 @@
 
     .catalog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 22px;
     }
 
@@ -114,7 +114,7 @@
 
     .card-img-container {
       width: 100%;
-      height: 200px;
+      height: 210px;
       background-color: #1e222b;
       display: flex;
       align-items: center;
@@ -135,14 +135,28 @@
       flex-grow: 1;
     }
 
+    .card-category {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+
     .card-title {
       font-size: 1.15rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 12px;
-      min-height: 2.4em;
-      display: flex;
-      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.4;
+      flex-grow: 1;
     }
 
     /* Tabla de precios dentro de la tarjeta */
@@ -150,7 +164,7 @@
       background: rgba(0, 0, 0, 0.25);
       border-radius: 8px;
       padding: 10px 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       font-size: 0.88rem;
     }
 
@@ -224,7 +238,9 @@
           <img src="Afnan-9pm.jpg" alt="Afnan 9pm">
         </div>
         <div class="card-body">
+          <span class="card-category">Ámbar Vainilla • Masculino</span>
           <h2 class="card-title">Afnan 9pm</h2>
+          <p class="card-desc">Salida dulce de manzana y canela con fondo seductor de vainilla y ámbar. Perfecto para citas y salidas nocturnas.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 83.800</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 9.800</span></div>
@@ -241,7 +257,9 @@
           <img src="Afnan-Turathi-Blue.jpg" alt="Afnan Turathi Blue">
         </div>
         <div class="card-body">
+          <span class="card-category">Cítrico Amaderado • Masculino</span>
           <h2 class="card-title">Afnan Turathi Blue</h2>
+          <p class="card-desc">Toronja chispeante, maderas nobles y notas especiadas. Elegante, versátil y con gran proyección veraniega.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 98.400</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 10.900</span></div>
@@ -251,14 +269,16 @@
         </div>
       </article>
 
-      <!-- 3. Al haramian Amber oud Gold -->
+      <!-- 3. Al Haramain Amber Oud Gold -->
       <article class="card">
         <span class="badge-stock">+10 disponibles</span>
         <div class="card-img-container">
           <img src="Al-Haramain-Amber-Oud-Gold.jpg" alt="Al Haramain Amber Oud Gold">
         </div>
         <div class="card-body">
-          <h2 class="card-title">Al Haramain Amber Oud Gold</h2>
+          <span class="card-category">Frutal Ambarino • Unisex</span>
+          <h2 class="card-title">Amber Oud Gold</h2>
+          <p class="card-desc">Explosión de frutas tropicales, bergamota, melón y una base cremosa de vainilla y almizcle. Duración extrema.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 134.700</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 12.300</span></div>
@@ -268,14 +288,16 @@
         </div>
       </article>
 
-      <!-- 4. Armaf Club de nuit Urban Elixir -->
+      <!-- 4. Armaf Club de Nuit Urban Elixir -->
       <article class="card">
         <span class="badge-stock">+10 disponibles</span>
         <div class="card-img-container">
-          <img src="Armaf-Club-de-Nuit-Urban-Elixir.jpg" alt="Armaf Club de nuit Urban Elixir">
+          <img src="Armaf-Club-de-Nuit-Urban-Elixir.jpg" alt="Armaf Club de Nuit Urban Elixir">
         </div>
         <div class="card-body">
-          <h2 class="card-title">Armaf Club de Nuit Urban Elixir</h2>
+          <span class="card-category">Fresco Especiado • Masculino</span>
+          <h2 class="card-title">Club de Nuit Urban Elixir</h2>
+          <p class="card-desc">Combinación sofisticada de bergamota, pimienta rosa, jazmín y ambroxan. Moderno, versátil y magnético.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 98.400</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 9.800</span></div>
@@ -285,14 +307,16 @@
         </div>
       </article>
 
-      <!-- 5. French avenue Liquid brun Limited Edition -->
+      <!-- 5. French Avenue Liquid Brun Limited Edition -->
       <article class="card">
         <span class="badge-stock">+10 disponibles</span>
         <div class="card-img-container">
           <img src="French-Avenue-Liquid-Brun-(Ltd).jpg" alt="French Avenue Liquid Brun">
         </div>
         <div class="card-body">
-          <h2 class="card-title">French Avenue Liquid Brun (Ltd)</h2>
+          <span class="card-category">Gourmand Amaderado • Unisex</span>
+          <h2 class="card-title">Liquid Brun (Ltd Edition)</h2>
+          <p class="card-desc">Notas licorosas, praliné, canela y maderas ahumadas. Una fragancia cálida, lujosa y envolvente de nicho.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 154.100</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 13.400</span></div>
@@ -309,7 +333,9 @@
           <img src="Lattafa-Eclaire.jpg" alt="Lattafa Eclaire">
         </div>
         <div class="card-body">
+          <span class="card-category">Gourmand Dulce • Unisex / Femenino</span>
           <h2 class="card-title">Lattafa Eclaire</h2>
+          <p class="card-desc">Caramelo derretido, leche condensada, miel y vainilla pura. Un aroma dulce y reconfortante estilo postre francés.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 81.400</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 11.000</span></div>
@@ -326,7 +352,9 @@
           <img src="Lattafa-Yara-(CANDY).jpg" alt="Lattafa Yara Candy">
         </div>
         <div class="card-body">
-          <h2 class="card-title">Lattafa Yara (CANDY)</h2>
+          <span class="card-category">Frutal Dulce • Femenino</span>
+          <h2 class="card-title">Lattafa Yara (Candy)</h2>
+          <p class="card-desc">Grosellas rojas glaseadas, mandarina chispeante, malvavisco y vainilla. Juvenil, alegre y adictivo.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 71.700</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 8.100</span></div>
@@ -343,7 +371,9 @@
           <img src="Lattafa-Yara-(ROSA).jpg" alt="Lattafa Yara Rosa">
         </div>
         <div class="card-body">
-          <h2 class="card-title">Lattafa Yara (ROSA)</h2>
+          <span class="card-category">Floral Tropical • Femenino</span>
+          <h2 class="card-title">Lattafa Yara (Rosa)</h2>
+          <p class="card-desc">Orquídea exótica, heliotropo, frutos tropicales, notas gourmand cremosas y sándalo. Femenino y muy elogiado.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 74.100</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 8.100</span></div>
@@ -360,7 +390,9 @@
           <img src="Rasasi-Hawas-Diva.jpg" alt="Rasasi Hawas Diva">
         </div>
         <div class="card-body">
+          <span class="card-category">Chipre Frutal • Femenino</span>
           <h2 class="card-title">Rasasi Hawas Diva</h2>
+          <p class="card-desc">Frambuesa brillante, flor de azahar del naranjo, pachulí y ámbar blanco. Elegante, vibrante y de gran fijación.</p>
           <div class="price-list">
             <div class="price-row"><span class="price-label">Frasco Cerrado:</span><span class="price-val">$ 129.900</span></div>
             <div class="price-row"><span class="price-label">Decant 5 ml:</span><span class="price-val">$ 13.300</span></div>
